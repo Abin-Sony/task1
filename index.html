@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task1</title>
+    <!-- bootsrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+   <!-- gfonts -->
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+        
+        .header {
+            background-color: #4a7abb;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .reference-data {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+        }
+        
+        .reference-data-dot {
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .reference-data-text {
+            color: white;
+            font-weight: bold;
+        }
+        
+        .form-section {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-row {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        
+        .form-label {
+            width: 200px;
+            font-weight: bold;
+        }
+        
+        .form-input {
+            padding: 5px;
+            border: 1px solid #999;
+            width: 250px;
+        }
+        
+        .reference-note {
+            color: #4a7abb;
+            margin-left: 15px;
+            font-style: italic;
+        }
+        
+        .table-container {
+            padding: 15px;
+            background-color: #ffc107;
+        }
+        
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .order-table th {
+            background-color: #ffc107;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .order-table td {
+            padding: 5px;
+        }
+        
+        .order-table input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #999;
+        }
+        
+        .checkbox-cell {
+            width: 30px;
+            text-align: center;
+        }
+        
+        .item-nr-cell {
+            width: 80px;
+        }
+        
+        .material-id-cell {
+            width: 100px;
+        }
+        
+        .description-cell {
+            width: 300px;
+        }
+        
+        .qty-cell {
+            width: 80px;
+        }
+        
+        .red-text {
+            color: red;
+            font-weight: bold;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+        }
+        
+        .action-buttons {
+            display: flex;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            margin: 0 5px;
+            background-color: #4a7abb;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .remarks-section {
+            padding: 15px;
+        }
+        
+        .remarks-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #999;
+        }
+        
+        .approval-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+        }
+        
+        .approval-column {
+            width: 30%;
+        }
+        
+        .approval-row {
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            background-color: #19a85b;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .notes-section {
+            padding: 15px;
+            display: flex;
+        }
+        
+        .notes-label {
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        
+        .reference-table {
+            margin-left: auto;
+            border-collapse: collapse;
+        }
+        
+        .reference-table td {
+            padding: 3px 10px;
+            text-align: left;
+        }
+        
+        .reference-table-header {
+            font-weight: bold;
+        }
+        
+        .button-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .add-btn, .minus-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #4a7abb;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            ORDER MATERIALS
+            <div class="reference-data">
+                <div class="reference-data-dot"></div>
+                <div class="reference-data-text">REFERENCE DATA</div>
+            </div>
+        </div>
+        
+        <!-- Order Info Section -->
+        <div class="form-section">
+            <div class="form-row">
+                <div class="form-label">ORDER LIST ID</div>
+                <input type="text" class="form-input" value="XXXX">
+                
+                <div class="form-label" style="margin-left: 20px;">BUILDING ID</div>
+                <input type="text" class="form-input" value="A01"style="width: 100px;">
+                
+                <div class="form-label" style="margin-left: 20px;">BUILDING NAME</div>
+                <input type="text" class="form-input" value="VALUE"style="width: 100px;">
+                
+                <div class="form-label" style="margin-left: 20px;">BUILDING ADDRESS</div>
+                <input type="text" class="form-input" value="XXXX" style="width: 150px;">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">ORDER DESCRIPTION</div>
+                <input type="text" class="form-input" value="XXXX" style="width: 450px;">
+                <div class="reference-note">(refered from Building MicroService)</div>
+            </div>
+        </div>
+        
+        <!-- Order Table Section -->
+        <div class="table-container">
+            <table class="order-table">
+                <thead>
+                    <tr>
+                        <th class="checkbox-cell"></th>
+                        <th>orderListI<br>temNrUID</th>
+                        <th>ITEM NR.</th>
+                        <th class="red-text">MATERIAL ID</th>
+                        <th class="red-text">MAT. DESCRIPTION</th>
+                        <th>CURRENT<br>QTY</th>
+                        <th>PREVIOUS<br>QTY</th>
+                        <th>QTY<br>DIFF</th>
+                        <th>Order Comment</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="checkbox-cell"><input type="checkbox" id="row1"></td>
+                        <td><input type="text" value="XXXX"></td>
+                        <td><input type="text" value="1"></td>
+                        <td><input type="text" value="XXXX" class="red-text"></td>
+                        <td><input type="text" value="XXXXX" class="red-text"></td>
+                        <td><input type="text" value="8"></td>
+                        <td><input type="text" value="10"></td>
+                        <td><input type="text" value="-2"></td>
+                        <td><input type="text" value="XXXX"></td>
+                        <td>
+                            <div class="button-row">
+                                <div class="add-btn">+</div>
+                                <div class="minus-btn">-</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="checkbox-cell"><input type="checkbox" id="row2"></td>
+                        <td><input type="text" value="XXXX"></td>
+                        <td><input type="text" value="2"></td>
+                        <td><input type="text" value="XXXX" class="red-text"></td>
+                        <td><input type="text" value="XXXX" class="red-text"></td>
+                        <td><input type="text" value="XXXX"></td>
+                        <td><input type="text" value="XXXX"></td>
+                        <td><input type="text" value="XXXX"></td>
+                        <td><input type="text" value="XXXX"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="checkbox-cell"><input type="checkbox" id="row3"></td>
+                        <td><input type="text" value="XXXX"></td>
+                        <td><input type="text" value="3"></td>
+                        <td><input type="text" value="XXXX" class="red-text"></td>
+                        <td><input type="text" value="XXXX" class="red-text"></td>
+                        <td><input type="text" value="XXXX"></td>
+                        <td><input type="text" value="XXXX"></td>
+                        <td><input type="text" value="XXXX"></td>
+                        <td><input type="text" value="XXXX"></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="reference-note" style="margin-top: 10px;">(refered from MaterialEntity)</div>
+        </div>
+        
+        <!-- Remarks Section -->
+        <div class="remarks-section">
+            <div class="form-row">
+                <div class="form-label">REMARKS</div>
+                <input type="text" class="remarks-input" value="XXXX">
+            </div>
+        </div>
+        
+        <!-- Approval Section -->
+        <div class="approval-section">
+            <div class="approval-column">
+                <div class="approval-row">
+                    <div class="form-label">PREP BY</div>
+                    <input type="text" class="form-input" value="XXXX">
+                </div>
+                <div class="approval-row">
+                    <div class="form-label">DATE</div>
+                    <input type="text" class="form-input" value="XXXX">
+                </div>
+                <button class="btn">SEND FOR CHK</button>
+            </div>
+            
+            <div class="approval-column">
+                <div class="approval-row">
+                    <div class="form-label">CHK BY</div>
+                    <input type="text" class="form-input" value="XXXX">
+                </div>
+                <div class="approval-row">
+                    <div class="form-label">DATE</div>
+                    <input type="text" class="form-input" value="XXXX">
+                </div>
+                <button class="btn">SEND FOR APP</button>
+            </div>
+            
+            <div class="approval-column">
+                <div class="approval-row">
+                    <div class="form-label">APPROVED BY</div>
+                    <input type="text" class="form-input" value="XXXX">
+                </div>
+                <div class="approval-row">
+                    <div class="form-label">DATE</div>
+                    <input type="text" class="form-input" value="XXXX">
+                </div>
+                <button class="btn">APPROVE</button>
+            </div>
+            
+            <div class="approval-column">
+                <table class="reference-table">
+                    <tr class="reference-table-header">
+                        <td>BUILDING ID</td>
+                        <td>BUILDING NAME</td>
+                    </tr>
+                    <tr>
+                        <td>-----</td>
+                        <td>----</td>
+                    </tr>
+                    <tr>
+                        <td>-----</td>
+                        <td>----</td>
+                    </tr>
+                    <tr>
+                        <td>-----</td>
+                        <td>-----</td>
+                    </tr>
+                </table>
+                <div class="action-buttons">
+                    <button class="btn">DELETE</button>
+                    <button class="btn">CANCEL</button>
+                    <button class="btn">SAVE</button>
+                </div>
+            </div>
+               
+            </div>
+
+
+
+
+            
+        
+        <!-- Footer -->
+        <div class="footer">
+            MATERIAL ORDER MICRO SERVICE
+        </div>
+        
+    
+
+    <script>
+        // Add event listeners for the + and - buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const addBtn = document.querySelector('.add-btn');
+            const minusBtn = document.querySelector('.minus-btn');
+            const tableBody = document.querySelector('.order-table tbody');
+            
+            // Function to update the building reference table
+            function updateBuildingReferenceTable() {
+                const buildingId = document.querySelector('.form-section .form-row:first-child input:nth-of-type(2)').value;
+                const buildingName = document.querySelector('.form-section .form-row:first-child input:nth-of-type(3)').value;
+                
+                // Update the reference table with the current building information
+                const referenceTable = document.querySelector('.reference-table');
+                const firstDataRow = referenceTable.rows[1];
+                
+                if (firstDataRow) {
+                    firstDataRow.cells[0].textContent = buildingId;
+                    firstDataRow.cells[1].textContent = buildingName;
+                }
+            }
+            
+            // Call once on page load to initialize
+            updateBuildingReferenceTable();
+            
+            // Listen for changes to the building ID and name fields
+            const buildingIdInput = document.querySelector('.form-section .form-row:first-child input:nth-of-type(2)');
+            const buildingNameInput = document.querySelector('.form-section .form-row:first-child input:nth-of-type(3)');
+            
+            buildingIdInput.addEventListener('change', updateBuildingReferenceTable);
+            buildingNameInput.addEventListener('change', updateBuildingReferenceTable);
+            
+            // Add new row
+            addBtn.addEventListener('click', function() {
+                const rowCount = tableBody.rows.length;
+                const newRow = tableBody.insertRow();
+                
+                newRow.innerHTML = `
+                    <td class="checkbox-cell"><input type="checkbox" id="row${rowCount + 1}"></td>
+                    <td><input type="text" value="XXXX"></td>
+                    <td><input type="text" value="${rowCount + 1}"></td>
+                    <td><input type="text" value="XXXX" class="red-text"></td>
+                    <td><input type="text" value="XXXX" class="red-text"></td>
+                    <td><input type="text" value="XXXX"></td>
+                    <td><input type="text" value="XXXX"></td>
+                    <td><input type="text" value="XXXX"></td>
+                    <td><input type="text" value="XXXX"></td>
+                    <td></td>
+                `;
+            });
+            
+            // Remove selected rows
+            minusBtn.addEventListener('click', function() {
+                const checkboxes = document.querySelectorAll('.order-table input[type="checkbox"]');
+                
+                for (let i = checkboxes.length - 1; i >= 0; i--) {
+                    if (checkboxes[i].checked) {
+                        tableBody.deleteRow(i);
+                    }
+                }
+                
+                // Update item numbers
+                const rows = tableBody.rows;
+                for (let i = 0; i < rows.length; i++) {
+                    rows[i].cells[2].querySelector('input').value = i + 1;
+                }
+            });
+            
+            // Calculate QTY DIFF when CURRENT QTY or PREVIOUS QTY changes
+            tableBody.addEventListener('input', function(e) {
+                const target = e.target;
+                if (target.parentElement.cellIndex === 5 || target.parentElement.cellIndex === 6) {
+                    const row = target.closest('tr');
+                    const currentQty = parseFloat(row.cells[5].querySelector('input').value) || 0;
+                    const previousQty = parseFloat(row.cells[6].querySelector('input').value) || 0;
+                    const diff = currentQty - previousQty;
+                    row.cells[7].querySelector('input').value = diff;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
