@@ -23,14 +23,33 @@
         
         body {
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: #ecebeb;
         }
         
         .container {
+            width: 90%;
             max-width: 1200px;
+            height: auto;
             margin: 0 auto;
             border: 1px solid #ccc;
             background-color: white;
+            padding: 20px;
+            flex: 0%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media(max-width:1024px){
+            .container{
+                width: 95%;
+            }
+        }
+
+        @media(max-width:768px){
+            .container{
+                width: 100%;
+                padding: 10px;
+            }
         }
         
         .header {
@@ -244,202 +263,206 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            ORDER MATERIALS
-            <div class="reference-data">
-                <div class="reference-data-dot"></div>
-                <div class="reference-data-text">REFERENCE DATA</div>
-            </div>
-        </div>
-        
-        <!-- Order Info Section -->
-        <div class="form-section">
-            <div class="form-row">
-                <div class="form-label">ORDER LIST ID</div>
-                <input type="text" class="form-input" value="XXXX">
-                
-                <div class="form-label" style="margin-left: 20px;">BUILDING ID</div>
-                <input type="text" class="form-input" value="A01"style="width: 100px;">
-                
-                <div class="form-label" style="margin-left: 20px;">BUILDING NAME</div>
-                <input type="text" class="form-input" value="VALUE"style="width: 100px;">
-                
-                <div class="form-label" style="margin-left: 20px;">BUILDING ADDRESS</div>
-                <input type="text" class="form-input" value="XXXX" style="width: 150px;">
-            </div>
-            
-            <div class="form-row">
-                <div class="form-label">ORDER DESCRIPTION</div>
-                <input type="text" class="form-input" value="XXXX" style="width: 450px;">
-                <div class="reference-note">(refered from Building MicroService)</div>
-            </div>
-        </div>
-        
-        <!-- Order Table Section -->
-        <div class="table-container">
-            <table class="order-table">
-                <thead>
-                    <tr>
-                        <th class="checkbox-cell"></th>
-                        <th>orderListI<br>temNrUID</th>
-                        <th>ITEM NR.</th>
-                        <th class="red-text">MATERIAL ID</th>
-                        <th class="red-text">MAT. DESCRIPTION</th>
-                        <th>CURRENT<br>QTY</th>
-                        <th>PREVIOUS<br>QTY</th>
-                        <th>QTY<br>DIFF</th>
-                        <th>Order Comment</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="checkbox-cell"><input type="checkbox" id="row1"></td>
-                        <td><input type="text" value="XXXX"></td>
-                        <td><input type="text" value="1"></td>
-                        <td><input type="text" value="XXXX" class="red-text"></td>
-                        <td><input type="text" value="XXXXX" class="red-text"></td>
-                        <td><input type="text" value="8"></td>
-                        <td><input type="text" value="10"></td>
-                        <td><input type="text" value="-2"></td>
-                        <td><input type="text" value="XXXX"></td>
-                        <td>
-                            <div class="button-row">
-                                <div class="add-btn">+</div>
-                                <div class="minus-btn">-</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="checkbox-cell"><input type="checkbox" id="row2"></td>
-                        <td><input type="text" value="XXXX"></td>
-                        <td><input type="text" value="2"></td>
-                        <td><input type="text" value="XXXX" class="red-text"></td>
-                        <td><input type="text" value="XXXX" class="red-text"></td>
-                        <td><input type="text" value="XXXX"></td>
-                        <td><input type="text" value="XXXX"></td>
-                        <td><input type="text" value="XXXX"></td>
-                        <td><input type="text" value="XXXX"></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="checkbox-cell"><input type="checkbox" id="row3"></td>
-                        <td><input type="text" value="XXXX"></td>
-                        <td><input type="text" value="3"></td>
-                        <td><input type="text" value="XXXX" class="red-text"></td>
-                        <td><input type="text" value="XXXX" class="red-text"></td>
-                        <td><input type="text" value="XXXX"></td>
-                        <td><input type="text" value="XXXX"></td>
-                        <td><input type="text" value="XXXX"></td>
-                        <td><input type="text" value="XXXX"></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="reference-note" style="margin-top: 10px;">(refered from MaterialEntity)</div>
-        </div>
-        
-        <!-- Remarks Section -->
-        <div class="remarks-section">
-            <div class="form-row">
-                <div class="form-label">REMARKS</div>
-                <input type="text" class="remarks-input" value="XXXX">
-            </div>
-        </div>
-        
-        <!-- Approval Section -->
-        <div class="approval-section">
-            <div class="approval-column">
-                <div class="approval-row">
-                    <div class="form-label">PREP BY</div>
-                    <input type="text" class="form-input" value="XXXX">
-                </div>
-                <div class="approval-row">
-                    <div class="form-label">DATE</div>
-                    <input type="text" class="form-input" value="XXXX">
-                </div>
-                <button class="btn">SEND FOR CHK</button>
-            </div>
-            
-            <div class="approval-column">
-                <div class="approval-row">
-                    <div class="form-label">CHK BY</div>
-                    <input type="text" class="form-input" value="XXXX">
-                </div>
-                <div class="approval-row">
-                    <div class="form-label">DATE</div>
-                    <input type="text" class="form-input" value="XXXX">
-                </div>
-                <button class="btn">SEND FOR APP</button>
-            </div>
-            
-            <div class="approval-column">
-                <div class="approval-row">
-                    <div class="form-label">APPROVED BY</div>
-                    <input type="text" class="form-input" value="XXXX">
-                </div>
-                <div class="approval-row">
-                    <div class="form-label">DATE</div>
-                    <input type="text" class="form-input" value="XXXX">
-                </div>
-                <button class="btn">APPROVE</button>
-            </div>
-            
-            <div class="approval-column">
-                <table class="reference-table">
-                    <tr class="reference-table-header">
-                        <td>BUILDING ID</td>
-                        <td>BUILDING NAME</td>
-                    </tr>
-                    <tr>
-                        <td>-----</td>
-                        <td>----</td>
-                    </tr>
-                    <tr>
-                        <td>-----</td>
-                        <td>----</td>
-                    </tr>
-                    <tr>
-                        <td>-----</td>
-                        <td>-----</td>
-                    </tr>
-                </table>
-                <div class="action-buttons">
-                    <button class="btn">DELETE</button>
-                    <button class="btn">CANCEL</button>
-                    <button class="btn">SAVE</button>
-                </div>
-            </div>
-               
-            </div>
-
-
-
-
-            
-        
-        <!-- Footer -->
-        <div class="footer">
-            MATERIAL ORDER MICRO SERVICE
-        </div>
-        
     
-
+      
+           <div class="container">
+                <!-- Header -->
+                <div class="header">
+                    ORDER MATERIALS
+                    <div class="reference-data">
+                        <div class="reference-data-dot"></div>
+                        <div class="reference-data-text">REFERENCE DATA</div>
+                    </div>
+                </div>
+                
+                <!-- Order Info Section -->
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-label">ORDER LIST ID</div>
+                        <input type="text" class="form-input" value="XXXX">
+                        
+                        <div class="form-label" style="margin-left: 20px;">BUILDING ID</div>
+                        <input type="text" class="form-input" value="A01"style="width: 100px;">
+                        
+                        <div class="form-label" style="margin-left: 20px;">BUILDING NAME</div>
+                        <input type="text" class="form-input" value="VALUE"style="width: 100px;">
+                        
+                        <div class="form-label" style="margin-left: 20px;">BUILDING ADDRESS</div>
+                        <input type="text" class="form-input" value="XXXX" style="width: 150px;">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-label">ORDER DESCRIPTION</div>
+                        <input type="text" class="form-input" value="XXXX" style="width: 450px;">
+                        <div class="reference-note">(refered from Building MicroService)</div>
+                    </div>
+                </div>
+                
+                <!-- Order Table Section -->
+                <div class="table-container">
+                    <table class="order-table">
+                        <thead>
+                            <tr>
+                                <th class="checkbox-cell"></th>
+                                <th>orderListI<br>temNrUID</th>
+                                <th>ITEM NR.</th>
+                                <th class="red-text">MATERIAL ID</th>
+                                <th class="red-text">MAT. DESCRIPTION</th>
+                                <th>CURRENT<br>QTY</th>
+                                <th>PREVIOUS<br>QTY</th>
+                                <th>QTY<br>DIFF</th>
+                                <th>Order Comment</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="checkbox-cell"><input type="checkbox" id="row1"></td>
+                                <td><input type="text" value="XXXX"></td>
+                                <td><input type="text" value="1"></td>
+                                <td><input type="text" value="XXXX" class="red-text"></td>
+                                <td><input type="text" value="XXXXX" class="red-text"></td>
+                                <td><input type="text" value="8"></td>
+                                <td><input type="text" value="10"></td>
+                                <td><input type="text" value="-2"></td>
+                                <td><input type="text" value="XXXX"></td>
+                                <td>
+                                    <div class="button-row">
+                                        <div class="add-btn">+</div>
+                                        <div class="minus-btn">-</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="checkbox-cell"><input type="checkbox" id="row2"></td>
+                                <td><input type="text" value="XXXX"></td>
+                                <td><input type="text" value="2"></td>
+                                <td><input type="text" value="XXXX" class="red-text"></td>
+                                <td><input type="text" value="XXXX" class="red-text"></td>
+                                <td><input type="text" value="XXXX"></td>
+                                <td><input type="text" value="XXXX"></td>
+                                <td><input type="text" value="XXXX"></td>
+                                <td><input type="text" value="XXXX"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="checkbox-cell"><input type="checkbox" id="row3"></td>
+                                <td><input type="text" value="XXXX"></td>
+                                <td><input type="text" value="3"></td>
+                                <td><input type="text" value="XXXX" class="red-text"></td>
+                                <td><input type="text" value="XXXX" class="red-text"></td>
+                                <td><input type="text" value="XXXX"></td>
+                                <td><input type="text" value="XXXX"></td>
+                                <td><input type="text" value="XXXX"></td>
+                                <td><input type="text" value="XXXX"></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="reference-note" style="margin-top: 10px;">(refered from MaterialEntity)</div>
+                </div>
+                
+                <!-- Remarks Section -->
+                <div class="remarks-section">
+                    <div class="form-row">
+                        <div class="form-label">REMARKS</div>
+                        <input type="text" class="remarks-input" value="XXXX">
+                    </div>
+                </div>
+                
+                <!-- Approval Section -->
+                <div class="approval-section">
+                    <div class="approval-column">
+                        <div class="approval-row">
+                            <div class="form-label">PREP BY</div>
+                            <input type="text" class="form-input" value="XXXX">
+                        </div>
+                        <div class="approval-row">
+                            <div class="form-label">DATE</div>
+                            <input type="text" class="form-input" value="XXXX">
+                        </div>
+                        <button class="btn">SEND FOR CHK</button>
+                    </div>
+                    
+                    <div class="approval-column">
+                        <div class="approval-row">
+                            <div class="form-label">CHK BY</div>
+                            <input type="text" class="form-input" value="XXXX">
+                        </div>
+                        <div class="approval-row">
+                            <div class="form-label">DATE</div>
+                            <input type="text" class="form-input" value="XXXX">
+                        </div>
+                        <button class="btn">SEND FOR APP</button>
+                    </div>
+                    
+                    <div class="approval-column">
+                        <div class="approval-row">
+                            <div class="form-label">APPROVED BY</div>
+                            <input type="text" class="form-input" value="XXXX">
+                        </div>
+                        <div class="approval-row">
+                            <div class="form-label">DATE</div>
+                            <input type="text" class="form-input" value="XXXX">
+                        </div>
+                        <button class="btn">APPROVE</button>
+                    </div>
+                    
+                    <div class="approval-column">
+                        <table class="reference-table">
+                            <tr class="reference-table-header">
+                                <td>BUILDING ID</td>
+                                <td>BUILDING NAME</td>
+                            </tr>
+                            <tr>
+                                <td>-----</td>
+                                <td>----</td>
+                            </tr>
+                            <tr>
+                                <td>-----</td>
+                                <td>----</td>
+                            </tr>
+                            <tr>
+                                <td>-----</td>
+                                <td>-----</td>
+                            </tr>
+                        </table>
+                        <div class="action-buttons">
+                            <button class="btn">DELETE</button>
+                            <button class="btn">CANCEL</button>
+                            <button class="btn">SAVE</button>
+                        </div>
+                    </div>
+                       
+                    </div>
+        
+        
+        
+        
+                    
+                
+                <!-- Footer -->
+                <div class="footer">
+                    MATERIAL ORDER MICRO SERVICE
+                </div>
+                
+            
+           </div>
+    
+      
     <script>
-        // Add event listeners for the + and - buttons
+       
         document.addEventListener('DOMContentLoaded', function() {
             const addBtn = document.querySelector('.add-btn');
             const minusBtn = document.querySelector('.minus-btn');
             const tableBody = document.querySelector('.order-table tbody');
             
-            // Function to update the building reference table
+          
             function updateBuildingReferenceTable() {
                 const buildingId = document.querySelector('.form-section .form-row:first-child input:nth-of-type(2)').value;
                 const buildingName = document.querySelector('.form-section .form-row:first-child input:nth-of-type(3)').value;
                 
-                // Update the reference table with the current building information
+                
                 const referenceTable = document.querySelector('.reference-table');
                 const firstDataRow = referenceTable.rows[1];
                 
@@ -449,17 +472,17 @@
                 }
             }
             
-            // Call once on page load to initialize
+           
             updateBuildingReferenceTable();
             
-            // Listen for changes to the building ID and name fields
+           
             const buildingIdInput = document.querySelector('.form-section .form-row:first-child input:nth-of-type(2)');
             const buildingNameInput = document.querySelector('.form-section .form-row:first-child input:nth-of-type(3)');
             
             buildingIdInput.addEventListener('change', updateBuildingReferenceTable);
             buildingNameInput.addEventListener('change', updateBuildingReferenceTable);
             
-            // Add new row
+           
             addBtn.addEventListener('click', function() {
                 const rowCount = tableBody.rows.length;
                 const newRow = tableBody.insertRow();
@@ -478,7 +501,7 @@
                 `;
             });
             
-            // Remove selected rows
+          
             minusBtn.addEventListener('click', function() {
                 const checkboxes = document.querySelectorAll('.order-table input[type="checkbox"]');
                 
@@ -488,14 +511,14 @@
                     }
                 }
                 
-                // Update item numbers
+                
                 const rows = tableBody.rows;
                 for (let i = 0; i < rows.length; i++) {
                     rows[i].cells[2].querySelector('input').value = i + 1;
                 }
             });
             
-            // Calculate QTY DIFF when CURRENT QTY or PREVIOUS QTY changes
+            
             tableBody.addEventListener('input', function(e) {
                 const target = e.target;
                 if (target.parentElement.cellIndex === 5 || target.parentElement.cellIndex === 6) {
